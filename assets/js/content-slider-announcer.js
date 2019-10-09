@@ -747,7 +747,7 @@ function () {
           _this.clearTimeoutTimer();
         }, options.duration);
 
-        _this.events.on('close', function () {
+        _this.events.once('close', function () {
           resolve();
         });
 

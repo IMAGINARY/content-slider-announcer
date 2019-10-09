@@ -71,7 +71,7 @@ export default class AnnouncerFrame {
         this.clearTimeoutTimer();
       }, options.duration);
 
-      this.events.on('close', () => {
+      this.events.once('close', () => {
         resolve();
       });
 
