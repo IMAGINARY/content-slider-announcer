@@ -59,7 +59,7 @@ export default class AnnouncerFrame {
       });
       const eventMask = window.document.createElement('div');
       eventMask.classList.add('content-slider-announcer-eventMask');
-      eventMask.addEventListener('click', () => {
+      eventMask.addEventListener('pointerdown', () => {
         this.hide();
       });
       this.wrapper.append(this.iframe);

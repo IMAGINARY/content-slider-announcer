@@ -658,6 +658,9 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+/**
+ * Interface that creates an announcer inside an iframe.
+ */
 var AnnouncerFrame =
 /*#__PURE__*/
 function () {
@@ -671,6 +674,26 @@ function () {
     this.hideTimeout = null;
     this.events = new _events["default"]();
   }
+  /**
+   * Show an announcement.
+   *
+   * This method creates an iframe attached to the current page's body.
+   * The frame will be removed when the announcement ends its duration
+   * or it's manually hidden.
+   *
+   * This method will fail (with a rejection) if an announcement is already
+   * in progress.
+   *
+   * @param {string} announcerSrc
+   *  URL of the index.html file of content-slider-announcer
+   * @param {string} text
+   *  Text to display
+   * @param {object} options
+   *  Options (see README)
+   * @return Promise
+   *  Returns a promise that resolves when the announcement is closed
+   */
+
 
   _createClass(AnnouncerFrame, [{
     key: "show",
@@ -709,7 +732,7 @@ function () {
 
         var eventMask = window.document.createElement('div');
         eventMask.classList.add('content-slider-announcer-eventMask');
-        eventMask.addEventListener('click', function () {
+        eventMask.addEventListener('pointerdown', function () {
           _this.hide();
         });
 
@@ -731,6 +754,10 @@ function () {
         _this.busy = false;
       });
     }
+    /**
+     * Hide the current announcement with a fade out animation.
+     */
+
   }, {
     key: "hide",
     value: function hide() {
@@ -751,6 +778,10 @@ function () {
         _this2.busy = false;
       }, AnnouncerFrame.HIDE_DELAY);
     }
+    /**
+     * Hide the current announcement immediately.
+     */
+
   }, {
     key: "hideNow",
     value: function hideNow() {
@@ -762,6 +793,10 @@ function () {
       this.destroyFrame();
       this.busy = false;
     }
+    /**
+     * Destroy the iframe and perform cleanup
+     */
+
   }, {
     key: "destroyFrame",
     value: function destroyFrame() {
@@ -772,6 +807,10 @@ function () {
       this.visible = false;
       this.events.emit('close');
     }
+    /**
+     * Clear and null the timeout timer
+     */
+
   }, {
     key: "clearTimeoutTimer",
     value: function clearTimeoutTimer() {
@@ -923,6 +962,8 @@ var announcerFrame = null;
  *  Text to display
  * @param {object} options
  *  Options (see README)
+ * @return Promise
+ *  Returns a promise that resolves when the announcement is closed
  */
 
 function createAnnouncement(announcerSrc, text) {
