@@ -69,7 +69,13 @@
       theme_xmas5: {mode: 'random-supertile', colors: ['#BF0413', '#F20530', '#F2274C', '#F26B83', '#590202', '#00A213', '#006F0D', '#00C117']},
     };
     const options = optionsSpring;
-    IMAGINARY.ContentSliderAnnouncer.createAnnouncement('../index.html', 'Let\'s see what\nhappens\nwhen the announcement is long', options);
+    IMAGINARY.ContentSliderAnnouncer.createAnnouncement(
+      '../index.html',
+      'Let\'s see what\nhappens\nwhen the announcement is long',
+      options
+    ).then(() => {
+      console.log("Announcement closed");
+    });
   </script>
 </body>
 </html>

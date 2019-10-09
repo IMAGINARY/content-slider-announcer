@@ -12,12 +12,14 @@ let announcerFrame = null;
  *  Text to display
  * @param {object} options
  *  Options (see README)
+ * @return Promise
+ *  Returns a promise that resolves when the announcement is closed
  */
 function createAnnouncement(announcerSrc, text, options = {}) {
   if (announcerFrame === null) {
     announcerFrame = new AnnouncerFrame();
   }
-  announcerFrame.show(announcerSrc, text, options);
+  return announcerFrame.show(announcerSrc, text, options);
 }
 
 /**

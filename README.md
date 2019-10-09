@@ -23,6 +23,9 @@ project.
 - **text** is whatever announcement you want to show, which will be formatted using `text-poster`.
 - **options** is an object with options (all optional). See below.
 
+This function will return a **Promise** that resolves when the announcement is closed (either
+by timeout or manually) and rejects if there's an announcement already in progress.
+
 To hide the announcement just call
 
 ```
