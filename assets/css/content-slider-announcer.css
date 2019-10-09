@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'Brown';
   font-weight: 700;
-  src: url("../../../fonts/BrownStd-Bold.eot");
+  src: url("../../../../../fonts/BrownStd-Bold.eot");
   /* IE9 Compat Modes */
-  src: url("../../../fonts/Brown-Bold.woff") format("woff"); }
+  src: url("../../../../../fonts/Brown-Bold.woff") format("woff"); }
 
 body, html {
   margin: 0;
