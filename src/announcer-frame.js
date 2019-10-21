@@ -82,7 +82,7 @@ export default class AnnouncerFrame {
   /**
    * Hide the current announcement with a fade out animation.
    */
-  hide() {
+  hide(duration = AnnouncerFrame.HIDE_DELAY) {
     if (this.busy || !this.visible) {
       return;
     }
@@ -90,12 +90,12 @@ export default class AnnouncerFrame {
 
     this.iframe.contentWindow.postMessage({
       type: 'hide',
-      duration: AnnouncerFrame.HIDE_DELAY,
+      duration,
     });
     setTimeout(() => {
       this.destroyFrame();
       this.busy = false;
-    }, AnnouncerFrame.HIDE_DELAY);
+    }, duration);
   }
 
   /**
