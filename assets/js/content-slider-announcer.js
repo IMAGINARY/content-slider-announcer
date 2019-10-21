@@ -710,7 +710,8 @@ function () {
 
         _this.busy = true;
         var defaultOptions = {
-          duration: 60000
+          duration: 60000,
+          fadeOutDuration: 2000
         };
         var options = Object.assign({}, defaultOptions, userOptions);
         _this.visible = true;
@@ -735,7 +736,7 @@ function () {
         var eventMask = window.document.createElement('div');
         eventMask.classList.add('content-slider-announcer-eventMask');
         eventMask.addEventListener('pointerdown', function () {
-          _this.hide();
+          _this.hide(options.fadeOutDuration);
         });
 
         _this.wrapper.append(_this.iframe);
@@ -744,7 +745,7 @@ function () {
 
         window.document.querySelector('body').append(_this.wrapper);
         _this.hideTimeout = setTimeout(function () {
-          _this.hide();
+          _this.hide(options.fadeOutDuration);
 
           _this.clearTimeoutTimer();
         }, options.duration);
